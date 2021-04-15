@@ -1,0 +1,180 @@
+body {
+  color: #042;
+  background-color: #014b10;
+  max-width: 800px;
+}
+
+h1 {
+  color: #ff9800;
+  letter-spacing: 10px;
+}
+
+#chameleon {
+  width: 20%;
+  height: 30%;
+  max-width: 800px;
+}
+
+/*
+It's multi-
+line
+comments
+It will be copied to css
+*/
+/* interpolation! ex) my-class */
+p.my-class {
+  border-color: #999;
+}
+
+h2 {
+  font-size: 1.4em;
+}
+h2 .small {
+  font-size: 0.7em;
+}
+h2 .medium {
+  font-size: 1em;
+}
+
+.parent {
+  color: #000;
+}
+.parent .child1, .parent .shild1a {
+  color: #111;
+}
+.parent .child1 .child2, .parent .shild1a .child2 {
+  color: #222;
+}
+
+.parent:hover {
+  color: #000;
+}
+.child1 .parent .child1a {
+  color: #111;
+}
+.child2 .parent {
+  color: #222;
+}
+.child3-1 .parent .child3 {
+  color: #333;
+}
+.parent-small {
+  font-size: 0.5em;
+}
+
+.partials {
+  color: #c69;
+  margin: 2em;
+  text-shadow: 4px, 2px, black;
+}
+
+blockquote {
+  border: 1px solid green;
+  border-radius: 10px;
+}
+
+.apply-border {
+  border: 1px solid green;
+  border-radius: 20px;
+}
+
+.apply-border-global {
+  border: 1px solid #699;
+  border-radius: 10px;
+}
+
+.div-model {
+  color: #ff0000;
+  border: 1px solid red;
+}
+.div-model:before {
+  display: block;
+  content: '"';
+  font-size: 4rem;
+}
+
+.awesome-p {
+  font-size: 2rem;
+  color: #ff9800;
+  margin: 2rem;
+}
+
+div#info {
+  color: blue;
+  background-color: grey;
+}
+
+div#default {
+  border: 1px solid red;
+}
+
+div#default2 {
+  border: 1px solid blue;
+}
+
+div#default3 {
+  border: 5px solid red;
+}
+
+div#default4 {
+  border: green solid red;
+}
+
+.paddings-4-values {
+  padding: 4em, 5em, 6em, 7em;
+}
+
+.shorthand-2-values {
+  padding: 1em, 2em;
+}
+
+.shorthand-1-values {
+  padding: 3em;
+}
+
+.shadows {
+  box-shadow: 0 10px 0 -5px #666, 0 20px 0 -10px #999, 0 30px 0 -16px #333;
+}
+
+.success2, .info, .success {
+  border: 1px solid #c69;
+  padding: 30px;
+  color: #014b10;
+}
+
+.success2:hover, .info:hover, .success:hover {
+  background-color: blue;
+}
+
+.success {
+  border-color: violet;
+}
+
+.info {
+  border-color: yellowgreen;
+}
+
+div .success2 #action {
+  font-weight: bold;
+  color: red;
+}
+
+div.operators {
+  width: 125px;
+  height: 250px;
+  font-size: 2.4rem;
+  padding: 17%;
+  line-height: 25px;
+  letter-spacing: 25px;
+}
+
+div.operators#special {
+  width: 200px;
+  height: 110px;
+}
+
+div.no-division {
+  font: 1.8em/1.5;
+}
+
+/*# sourceMappingURL=style.css.map */

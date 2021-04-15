@@ -1,0 +1,259 @@
+@import "partials/colors";
+@import "partials/spacing";
+@import "partials/visual";
+
+// Use any valid CSS color format
+$deep-green: #014b10;
+$deep-green: hsl(132, 97%, 15%);
+$deep-green: rgb(1, 75, 16);
+
+// any valid CSS value format is OK
+$border: 1px solid green;
+$margins: 10em 12px 8rem 0;
+
+// You can use numbers in variables names
+$padding: 10px;
+$padding-2x: 20px;
+$padding-3x: 30px;
+
+// hyphens and underscores are interchangeable
+$chameleon-width: 20%;
+$chameleon_height: 30%;
+
+// strings are valid from no quote, single quote to double quotes.
+$default-font: Source Sans Pro, "Helvetica", 'sans-serif';
+
+// to use !global
+$max-width: null;
+
+$class-name: my-class;
+$attribute: border;
+
+body {
+  $my-color: #042;
+  $max-width: 800px !global;
+  color: $my-color;
+  background-color: $deep-green;
+  max-width: $max-width;
+}
+
+h1 {
+  color: #ff9800;
+  letter-spacing: 10px;
+}
+
+#chameleon {
+  width: $chameleon-width;
+  height: $chameleon_height;
+  max-width: $max-width;
+}
+
+// One line comments will not be on the css
+/*
+It's multi-
+line
+comments
+It will be copied to css
+*/
+
+/* interpolation! ex) #{$class-name} */
+p.#{$class-name} { 
+  #{$attribute}-color: #999;
+}
+
+// nested rules
+h2 {
+  font-size: 1.4em;
+  
+  .small{
+    font-size: 0.7em;
+  }
+  .medium {
+    font-size: 1em;
+  }
+}
+
+.parent {
+  color: #000;
+  .child1, .shild1a { // One level deep
+    color: #111;
+    .child2 { // two levels deep
+      color: #222;
+    }
+  }
+}
+
+// use the & special character
+.parent {
+  &:hover {
+    color: #000;
+  }
+  .child1 & .child1a {
+    color: #111;
+  }
+  .child2 & {
+    color: #222;
+  }
+  .child3 {
+    .child3-1 & {
+      color: #333;
+    }
+  }
+  &-small {
+    font-size: .5em;
+  }
+}
+
+// Import partials
+.partials {
+  color: $color-primary;
+  margin: $margin-h1;
+  text-shadow: $shadow-blur, 2px, black;
+}
+
+// Mixin - include
+@mixin apply-green-border {
+  border: 1px solid green;
+  border-radius: 10px;
+}
+
+blockquote {
+  @include apply-green-border;
+}
+
+@mixin apply-border($color, $radius) {
+  border: 1px solid $color;
+  border-radius: $radius;
+}
+
+.apply-border {
+  @include apply-border(green, 20px);
+}
+
+.apply-border-global {
+  @include apply-border($color-accent, $padding);
+}
+
+@mixin div-model($color) {
+  color: #ff0000;
+  border: 1px solid $color;
+
+  &:before {
+    display: block;
+    content: '"';
+    font-size: 4rem;
+  }
+}
+
+.div-model {
+  @include div-model(red);
+}
+
+@mixin awesome-p {
+  .awesome-p {
+    font-size: 2rem;
+    color: #ff9800;
+    margin: 2rem;
+  }
+}
+@include awesome-p;
+
+@mixin text-blue { color: blue; }
+@mixin background-grey { background-color: grey; }
+@mixin info-style {
+  @include text-blue;
+  @include background-grey;
+}
+
+div#info {
+  @include info-style;
+}
+
+@mixin apply-border2($thickness: 1px, $color: red) {
+  border: $thickness solid $color;
+}
+
+div#default {
+  @include apply-border2;
+}
+
+div#default2 {
+  @include apply-border2($color: blue);
+}
+
+div#default3 {
+  @include apply-border2(5px);
+}
+
+div#default4 {
+  @include apply-border2(green);
+}
+
+@mixin paddings ($padding-list...) {
+  padding: $padding-list;
+}
+.paddings-4-values { @include paddings(4em, 5em, 6em, 7em); }
+.shorthand-2-values { @include paddings(1em, 2em); }
+.shorthand-1-values { @include paddings(3em); }
+
+@mixin box-shadow($shadows...) {
+  box-shadow: $shadows;
+}
+
+.shadows {
+  @include box-shadow(0 10px 0 -5px #666,
+                      0 20px 0 -10px #999,
+                      0 30px 0 -16px #333);
+}
+
+// Inheritance
+%message {
+  border: 1px solid #c69;
+  padding: $padding-3x;
+  color: $deep-green;
+}
+
+%message:hover {
+  background-color: blue;
+}
+
+.success {
+  @extend %message;
+  border-color: violet;
+}
+
+.info {
+  @extend %message;
+  border-color: yellowgreen;
+}
+
+div %message-action #action {
+  font-weight: bold;
+  color: red;
+}
+
+.success2 {
+  @extend %message;
+  @extend %message-action;
+}
+
+// operators
+div.operators {
+  width: 100px + 25px;
+  height: 10 * 25px;
+  font-size: 3.2rem - .8;
+  padding: 5 + 12%;
+  line-height: 5 * 5px;
+  letter-spacing: (100px/4);
+}
+
+div.operators#special {
+  $container-width: 400px;
+  width: $container-width / 2;
+  height: $padding-3x * 2 + 100px / 2;
+}
+
+$default-font-size: 1.8em;
+div.no-division {
+  font: #{$default-font-size}/1.5;
+}
